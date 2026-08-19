@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🏡 EstateKart
 
-## Getting Started
+Welcome to **EstateKart**, a premium real estate and rental property management platform. Whether you are a tenant looking for your next home or a landlord looking to list your properties, EstateKart provides a seamless, modern, and AI-assisted experience.
 
-First, run the development server:
+---
 
+## ✨ Features
+
+- **🔐 Google OAuth Authentication**: Quick and secure login using NextAuth with Google integration.
+- **🤖 EK.ai Chatbot Assistant**: An interactive AI assistant powered by Gemini (`gemini-3.5-flash`) to guide users with property search, rates, and platform guidance.
+- **🗺️ Interactive Map Geolocation**: Real-time property map pinning using Leaflet and Google Maps API.
+- **✉️ Direct Landlord Inquiries**: Internal user-to-user messaging system allowing renters to contact sellers directly.
+- **⭐ Saved Properties (Bookmarks)**: Users can bookmark and manage their favorite listings.
+- **📸 Cloudinary Image Hosting**: Seamless property multi-image upload and management.
+- **📱 Fully Responsive Design**: Sleek layout crafted with custom CSS and Tailwind CSS, optimized for mobile, tablet, and desktop views.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Frontend library**: [React 19](https://react.dev/)
+- **Database**: [MongoDB](https://www.mongodb.com/) via [Mongoose](https://mongoosejs.com/) ORM
+- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
+- **AI Integrations**: [Google GenAI SDK](https://github.com/google-gemini/generative-ai-js)
+- **Maps**: [Leaflet Maps](https://leafletjs.org/) & Google Maps API
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) & PostCSS
+- **Media Storage**: [Cloudinary](https://cloudinary.com/)
+
+---
+
+## 🚀 How EstateKart Works
+
+Here is a quick overview of how users interact with the application:
+
+### 1. Searching and Exploring
+- Visitors land on the homepage and can search for properties by location or property type.
+- Pagination supports smooth navigation across multiple listings.
+- Each listing page displays comprehensive descriptions, property details (beds, baths, square feet), nightly/weekly/monthly rates, and dynamic contact forms.
+
+### 2. User Accounts & Bookmarks
+- Logged-in users can bookmark property cards.
+- Saved properties are persisted to their profile and can be viewed or removed at any time under the **Saved Properties** section.
+
+### 3. Listing & Managing Properties (For Landlords)
+- Registered users can create, edit, or delete listings via the **Add Property** page.
+- Landlords can specify coordinates (latitude and longitude) to pin their property location accurately on the map.
+- Uploaded images are hosted on Cloudinary, providing optimized loading and performance.
+
+### 4. Interactive Messaging
+- Renters can submit an inquiry through the contact form on any listing page.
+- Landlords receive these inquiries in their personal **Messages** inbox, displaying the sender's details, phone, email, and property reference.
+
+### 5. Chatting with EK.ai (AI Helper)
+- A floating chatbot is available on the bottom-right corner of the site.
+- Driven by Gemini API, it provides smart real estate advice and responds to inquiries about EstateKart listings.
+- Includes user prompt editing, copying messages, and clear history features.
+
+---
+
+## ⚙️ Getting Started & Local Setup
+
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) (version 18+ recommended) and a running [MongoDB](https://www.mongodb.com/) database.
+
+### 1. Clone & Install Dependencies
+Navigate to the root directory and install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Setup Environment Variables
+Create a file named `.env` in the root directory and configure the following variables:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```env
+# Domain Settings
+NEXT_PUBLIC_DOMAIN=http://localhost:3000
+NEXT_PUBLIC_API_DOMAIN=http://localhost:3000/api
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Database Connection
+MONGODB_URI=your_mongodb_connection_string
 
-## Learn More
+# Google OAuth Credentials (for NextAuth login)
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-To learn more about Next.js, take a look at the following resources:
+# NextAuth Configurations
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_URL_INTERNAL=http://localhost:3000
+NEXTAUTH_SECRET=your_nextauth_jwt_secret
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Cloudinary Credentials (for property images upload)
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Map and Geocoding APIs
+NEXT_PUBLIC_GOOGLE_GEOCODING_API_KEY=your_google_geocoding_api_key
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 
-## Deploy on Vercel
+# Google Gemini AI Credentials
+GEMINI_API_KEY=your_gemini_api_key
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. Run Development Server
+Run the local dev server:
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) with your browser to experience EstateKart!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 4. Build for Production
+To generate an optimized production build, run:
+```bash
+npm run build
+npm start
+```
